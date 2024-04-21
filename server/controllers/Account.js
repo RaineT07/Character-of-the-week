@@ -45,7 +45,7 @@ const signup = async (req, res) => {
     await newAccount.save();
 
     req.session.account = Account.toAPI(newAccount);
-    return res.json({ redirect: '/SheetList' });
+    return res.json({ redirect: '/sheetList' });
   } catch (err) {
     console.log(err);
     if (err.code === 11000) {

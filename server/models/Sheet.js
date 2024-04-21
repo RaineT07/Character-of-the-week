@@ -50,14 +50,6 @@ const SheetSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
-  // moves:{
-  // type: [String],
-  //    required:true,
-  // },
-  // ratings:{
-  // type:[String],
-  // required:true,
-  // },
   description: {
     type: String,
     required: true,
@@ -74,8 +66,6 @@ SheetSchema.statics.toAPI = (doc) => ({
   luck: doc.luck,
   harm: doc.harm,
   unstable: doc.unstable,
-  // moves:doc.moves,
-  // ratings:doc.ratings,
   description: doc.description,
 });
 

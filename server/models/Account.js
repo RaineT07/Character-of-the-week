@@ -22,6 +22,12 @@ const AccountSchema = new mongoose.Schema({
   },
 });
 
+AccountSchema.statics.toAPI = (doc) => ({
+  username: doc.username,
+  _id: doc._id,
+});
+
+
 AccountSchema.statics.generateHash = (password) => bcrypt.hash(password, saltRounds);
 
 AccountSchema.statics.authenticate = async (username, password, callback) => {

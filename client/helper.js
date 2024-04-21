@@ -3,8 +3,8 @@
    end in an error.
 */
 const handleError = (message) => {
-    document.getElementbyId('errorMessage').textContent = message;
-    document.getElementById('incorrectMessage').classList.remove('hidden');
+    document.getElementById('errorMessage').textContent = message;
+    document.getElementById('SheetMessage').classList.remove('hidden');
   };
 
 /* Sends post requests to the server using fetch. Will look for various
@@ -24,6 +24,10 @@ const sendPost = async (url, data, handler) => {
 
     if(result.redirect){
       window.location = result.redirect;
+    }
+
+    if(result.error){
+      handleError(result.error);
     }
 
     if(handler){

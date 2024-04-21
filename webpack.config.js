@@ -4,6 +4,7 @@ module.exports = {
     entry: {
         app: './client/sheets.jsx',
         login: './client/login.jsx',
+        storage: './client/storage.jsx',
     },
     module: {
         rules: [

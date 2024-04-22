@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        app: './client/sheets.jsx',
+        storage: './client/sheets.jsx',
         login: './client/login.jsx',
-        storage: './client/storage.jsx',
+        sheet: './client/storage.jsx',
     },
     module: {
         rules: [

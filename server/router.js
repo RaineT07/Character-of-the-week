@@ -13,6 +13,7 @@ const router = (app) => {
 
   app.get('/sheetList', mid.requiresLogin, controllers.Sheet.listPage);
   app.post('/sheetList', mid.requiresLogin, controllers.Sheet.sheetPage);
+  // app.get('/getSingleSheet', mid.requiresLogin, controllers.Sheet.getSingle);
 
   app.get('/sheet', mid.requiresLogin, controllers.Sheet.sheetPage);
   app.post('/makeSheet', mid.requiresLogin, controllers.Sheet.makeCharacter);

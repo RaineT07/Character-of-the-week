@@ -56,6 +56,15 @@ const SheetSchema = new mongoose.Schema({
     trim: true,
     set: setDescription,
   },
+  owner: {
+    type: mongoose.Schema.ObjectId,
+    required:true,
+    ref: 'Account',
+  },
+  createdDate: {
+    type:Date,
+    default:Date.now
+  }
 });
 
 SheetSchema.statics.toAPI = (doc) => ({

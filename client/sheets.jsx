@@ -20,6 +20,17 @@ const handleSheet = (e, onSheetAdded) =>{
     return false;
 };
 
+const handleChar = (e) =>{
+    e.preventDefault();
+    helper.hideError();
+
+    const name = e.target.querySelector('#CharName').value;
+    const playbook = e.target.querySelector('#CharPlaybook').value;
+    const description = e.target.querySelector("#CharDescription").value;
+
+    
+}
+
 const SheetForm = (props) =>{
     return (
         <form id='sheetForm'
@@ -63,15 +74,16 @@ const CharList = (props) =>{
     const characterNodes = chars.map(char =>{
         return(
             <form id='charForm'
+                onSubmit= {(e)=>handleChar(e)}
                 name='charForm'
                 action='/sheetList'
                 method='POST'
                 className='charForm'
             >
                 <div key={char.id} className='char'>
-                    <h3 className='charName'>Name: {char.name}</h3>
-                    <h3 className='charPlaybook'>Playbook: {char.playbook}</h3>
-                    <h3 className='charDescription'>Description: {char.description}</h3>
+                    <h3 id='charName' className='charName'>Name: {char.name}</h3>
+                    <h3 id='charPlaybook' className='charPlaybook'>Playbook: {char.playbook}</h3>
+                    <h3 id='charDescription' className='charDescription'>Description: {char.description}</h3>
                     <input id='charFull' type='submit' value='Show Full Character Sheet'/>
                 </div>
             </form>
@@ -101,7 +113,8 @@ const App = () =>{
 };
 
 const init = () =>{
-    const root = createRoot(document.getElementById('sheetApp'));
+    //this sounds backwards because this is the sheet.jsx package but it handles the storage page (poor planning)
+    const root = createRoot(document.getElementById('storageApp'));
     root.render(<App/>);
 }
 

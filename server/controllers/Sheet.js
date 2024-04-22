@@ -7,6 +7,7 @@ const listPage = async (req, res) => {
 }
 
 const sheetPage = async (req, res) => {
+  console.log(req);
   res.render('sheet');
 }
 
@@ -65,6 +66,12 @@ const getSheets = async (req, res) => {
     return res.status(500).json({ error: 'Error retrieving Sheets!' });
   }
 };
+
+// const getSingle = async (req, res) =>{
+//   try{
+//     const query = {owner: req.session.account._id};
+//   }
+// }
 
 module.exports = {
   listPage,

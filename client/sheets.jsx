@@ -8,10 +8,19 @@ const handleSheet = (e, onSheetAdded) =>{
     helper.hideError();
 
     const name = e.target.querySelector('#CharName').value;
-    const playbook = e.target.querySelector('#CharPlaybook').value;
+    const playbookOptions = e.target.querySelector('#defaultPlaybooks').value;
     const description = e.target.querySelector("#CharDescription").value;
+    
+    let playbook = '';
 
-    if(!name || !playbook || !description){
+    if(playbookOptions=='Custom Playbook'){
+        playbook = e.target.querySelector('#CustomPlaybook').value;
+    }else{
+        playbook = playbookOptions;
+    }
+
+
+    if(!name || !description || !playbook){
         helper.handleError('All fields required!');
         return false;
     }
@@ -43,7 +52,30 @@ const SheetForm = (props) =>{
             <label htmlFor='name'>Name: </label>
             <input id='CharName' type='text' name='name' placeholder='Character Name'/>
             <label htmlFor='playbook'>Playbook: </label>
-            <input id='CharPlaybook' type='text' name='playbook' placeholder='Character Playbook'/>
+            <select name='playbooks' id='defaultPlaybooks' form='sheetForm' onChange={(e) =>
+            {
+                if(e.target.value=='Custom Playbook'){
+                    document.querySelector('#CustomPlaybook').style.display = 'inline';
+
+                }else{
+                    document.querySelector('#CustomPlaybook').style.display = 'none';
+                }
+            }}>
+                <option value="The Chosen">The Chosen</option>
+                <option value="The Crooked">The Crooked</option>
+                <option value="The Divine">The Divine</option>
+                <option value="The Expert">The Expert</option>
+                <option value="The Flake">The Flake</option>
+                <option value="The Initiate">The Initiate</option>
+                <option value="The Monstrous">The Monstrous</option>
+                <option value="The Mundane">The Mundane</option>
+                <option value="The Professional">The Professional</option>
+                <option value="The spell-slinger">The Spell-Slinger</option>
+                <option value="The spooky">The Spooky</option>
+                <option value="The wronged">The Wronged</option>
+                <option value="Custom Playbook">Custom</option>
+            </select>
+            <input id='CustomPlaybook' type='text' name='playbook' style={{display: 'none'}} placeholder='Character Playbook'/>
             <label htmlFor='description'>Description: </label>
             <input id='CharDescription' type='text' name='description' placeholder='Character Description'/>
             <input className='makeCharSubmit' type='submit' value='Make Character'/>

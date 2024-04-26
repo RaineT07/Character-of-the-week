@@ -106,7 +106,7 @@ const CharList = (props) =>{
     const characterNodes = chars.map(char =>{
         return(
             <form id='charForm'
-                onSubmit= {(e)=>handleChar(e)}
+                // onSubmit= {(e)=>handleChar(e)}
                 name='charForm'
                 action='/sheetList'
                 method='POST'

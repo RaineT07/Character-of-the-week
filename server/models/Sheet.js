@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const File = require('/filestore.js');
+const {FileSchema} = File;
 const _ = require('underscore');
 
 const setName = (name) => _.escape(name).trim();
@@ -55,6 +57,10 @@ const SheetSchema = new mongoose.Schema({
     required: true,
     trim: true,
     set: setDescription,
+  },
+  image:{
+    type:FileSchema,
+    required:false,
   },
   owner: {
     type: mongoose.Schema.ObjectId,

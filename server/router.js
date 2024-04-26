@@ -12,7 +12,10 @@ const router = (app) => {
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
   app.get('/sheetList', mid.requiresLogin, controllers.Sheet.listPage);
+
   app.post('/sheetList', mid.requiresLogin, controllers.Sheet.sheetPage);
+  app.post('/upload', mid.requiresLogin, controllers.Filestore.uploadFile); 
+  app.get('/retrieve', controllers.Filestore.retrieveFile);
   // app.get('/getSingleSheet', mid.requiresLogin, controllers.Sheet.getSingle);
 
   app.get('/sheet', mid.requiresLogin, controllers.Sheet.sheetPage);

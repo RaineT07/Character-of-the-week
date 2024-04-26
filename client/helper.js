@@ -39,6 +39,19 @@ const sendPost = async (url, data, handler) => {
     document.getElementById('errorMessage').classList.add('hidden');
   };
 
+  const uploadFile = async (e) =>{
+    e.preventDefault();
+    const response = await fetch('/upload', {
+      method: 'POST',
+      body: new FormData(e.target),
+    });
+
+    const text = await response.text();
+    document.getElementById('messages').innerText = text;
+
+    return false;
+  }
+
   module.exports = {
     handleError,
     sendPost,

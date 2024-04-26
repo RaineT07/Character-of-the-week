@@ -9,6 +9,29 @@ const CharSheet = (props) =>{
     );
 }
 
+const imageNode = (props) =>{
+    const [image, setImage] = useState(props.image);
+    useEffect(()=>{
+        const loadImageFromServer = async () =>{
+            const response = await fetch('/retrieve');
+        }
+    })
+}
+
+const ImageForm = (props) =>{
+    return(
+        <form id='imageForm'
+            onSubmit={()=>handleImage(e,props.triggerReload)}
+            name='imageForm'
+            action='/upload'
+            method='POST'
+            className='imageForm'
+        >
+
+        </form>
+    )
+}
+
 const MoveForm = (props) =>{
     return(
     <form id='moveForm'
@@ -28,13 +51,26 @@ const MoveForm = (props) =>{
 };
 
 const App = () =>{
+    const [reloadMoves, setReloadMoves] = useState(false);
+    const [reloadImage, setReloadImage] = useState(false);
     return (
         <div>
             <div id='fullCharacter'>
                 <CharSheet/>
             </div>
+            <div id='characterImage'>
+                <div id='imgForm'>
+                    <ImageForm triggerReload={() => setReloadImage(!reloadImage)}/>
+                </div>
+                <div id='image'>
+                    <ImageNode image = {[]} reloadImage={reloadImage}/>
+                </div>
+            </div>
             <div id='moveForm'>
                 <MoveForm triggerReload={() => setReloadMoves(!reloadMoves)}/>
+            </div>
+            <div id='Moves'>
+                <MoveList moves = {[]} reloadMoves={reloadMoves}/>
             </div>
         </div>
     );

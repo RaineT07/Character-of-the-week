@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const File = require('/filestore.js');
+const File = require('./Filestore.js');
 const {FileSchema} = File;
 const _ = require('underscore');
 

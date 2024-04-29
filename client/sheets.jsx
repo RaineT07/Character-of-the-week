@@ -29,14 +29,21 @@ const handleSheet = (e, onSheetAdded) =>{
     return false;
 };
 
-const handleChar = (e) =>{
+const handleChar = (e, char) =>{
     e.preventDefault();
     helper.hideError();
 
-    const name = e.target.querySelector('#CharName').value;
-    const playbook = e.target.querySelector('#CharPlaybook').value;
-    const description = e.target.querySelector("#CharDescription").value;
+    console.log(char);
+    const name = e.target.querySelector('#charName').innerHTML;
+    const playbook = e.target.querySelector('#charPlaybook').innerHTML;
+    const description = e.target.querySelector("#charDescription").innerHTML;
 
+    console.log('name: ' + name);
+    console.log('playbook: ' + playbook);
+    console.log('desc.: ' + description);
+
+    helper.sendPost(e.target.action, {name, playbook, description});
+    return false;
     
 }
 
@@ -106,9 +113,9 @@ const CharList = (props) =>{
     const characterNodes = chars.map(char =>{
         return(
             <form id='charForm'
-                // onSubmit= {(e)=>handleChar(e)}
+                onSubmit= {(e, char)=>handleChar(e, char)}
                 name='charForm'
-                action='/sheetList'
+                action='/getSingleSheet'
                 method='POST'
                 className='charForm'
             >

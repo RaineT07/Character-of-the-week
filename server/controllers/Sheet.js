@@ -73,9 +73,23 @@ const getSheets = async (req, res) => {
 //   }
 // }
 
+const getSingleSheet = async (req, res) =>{
+  console.log(req);
+  console.log(req.body);
+
+  let data = req.body;
+  data.name = data.name.substring(6, data.name.length);
+  data.playbook = data.playbook.substring(10, data.playbook.length);
+  data.description = data.description.substring(13, data.description.length);
+
+
+  console.log(data);
+}
+
 module.exports = {
   listPage,
   getSheets,
   sheetPage,
   makeCharacter,
+  getSingleSheet,
 };

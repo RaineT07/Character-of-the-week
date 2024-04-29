@@ -13,10 +13,10 @@ const router = (app) => {
 
   app.get('/sheetList', mid.requiresLogin, controllers.Sheet.listPage);
 
-  app.post('/sheetList', mid.requiresLogin, controllers.Sheet.sheetPage);
+  // app.post('/sheetList', mid.requiresLogin, controllers.Sheet.sheetPage);
   app.post('/upload', mid.requiresLogin, controllers.Filestore.uploadFile); 
   app.get('/retrieve', controllers.Filestore.retrieveFile);
-  // app.get('/getSingleSheet', mid.requiresLogin, controllers.Sheet.getSingle);
+  app.post('/getSingleSheet', mid.requiresLogin, controllers.Sheet.getSingleSheet);
 
   app.get('/sheet', mid.requiresLogin, controllers.Sheet.sheetPage);
   app.post('/makeSheet', mid.requiresLogin, controllers.Sheet.makeCharacter);

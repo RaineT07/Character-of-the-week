@@ -39,3 +39,8 @@ const retrieveFile = async (req, res) =>{
         return res.status(400).json({error:'Something went wrong retrieving file!'});
     }
 }
+
+module.exports = {
+    retrieveFile,
+    uploadFile,
+}

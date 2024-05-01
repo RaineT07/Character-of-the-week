@@ -4,13 +4,13 @@
   "description": "A web application for making and storing Monster of the Week characters",
   "main": "'./server/app.js'",
   "scripts": {
-    "webpack":"webpack",
-    "webpackWatch":"webpack watch",
-    "nodemon":"nodemon -e js,html,css --watch ./server --watch ./hosted ./server/app.js",
-    "start":"node ./server/app.js",
-    "pretest":"eslint ./server --fix",
+    "webpack": "webpack",
+    "webpackWatch": "webpack watch",
+    "nodemon": "nodemon -e js,html,css --watch ./server --watch ./hosted ./server/app.js",
+    "start": "node ./server/app.js",
+    "pretest": "eslint ./server --fix",
     "test": "echo \"Tests complete\"",
-    "heroku-postbuild":"webpack"
+    "heroku-postbuild": "webpack"
   },
   "repository": {
     "type": "git",
@@ -56,6 +56,7 @@
     "express-session": "^1.18.0",
     "helmet": "^7.1.0",
     "mongoose": "^8.2.3",
+    "react-router-dom": "^6.23.0",
     "redis": "^4.6.13",
     "serve-favicon": "^2.5.0",
     "underscore": "^1.13.6"

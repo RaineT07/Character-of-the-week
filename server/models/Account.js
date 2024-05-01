@@ -27,7 +27,6 @@ AccountSchema.statics.toAPI = (doc) => ({
   _id: doc._id,
 });
 
-
 AccountSchema.statics.generateHash = (password) => bcrypt.hash(password, saltRounds);
 
 AccountSchema.statics.authenticate = async (username, password, callback) => {

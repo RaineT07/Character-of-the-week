@@ -3,7 +3,8 @@
    end in an error.
 */
 const handleError = (message) => {
-    document.getElementById('errorMessage').textContent = message;
+    document.getElementById('errorMessage').innerHTML = message;
+    document.getElementById('errorMessage').classList.remove('hidden');
     document.getElementById('SheetMessage').classList.remove('hidden');
   };
 
@@ -20,6 +21,7 @@ const sendPost = async (url, data, handler) => {
     });
 
     const result = await response.json();
+    document.getElementById('errorMessage').classList.add('hidden');
     document.getElementById('SheetMessage').classList.add('hidden');
 
     if(result.redirect){
@@ -36,6 +38,7 @@ const sendPost = async (url, data, handler) => {
   };
 
   const hideError = () =>{
+    document.getElementById('errorMessage').classList.add('hidden');
     document.getElementById('errorMessage').classList.add('hidden');
   };
 

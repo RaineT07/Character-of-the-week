@@ -1,26 +1,26 @@
 const mongoose = require('mongoose');
 
 const FileSchema = new mongoose.Schema({
-    name:{
-        type:String,
-    },
+  name: {
+    type: String,
+  },
 
-    data:{
-        type:Buffer,
-    },
+  data: {
+    type: Buffer,
+  },
 
-    size:{
-        type:Number,
-    },
+  size: {
+    type: Number,
+  },
 
-    mimetype: {
-        type:String,
-    },
+  mimetype: {
+    type: String,
+  },
 });
 
 const FileModel = mongoose.model('FileModel', FileSchema);
 
 module.exports = {
-    FileModel,
-    FileSchema,
+  FileModel,
+  FileSchema,
 };

@@ -3,8 +3,17 @@ const React = require('react');
 const {useState, useEffect} = React;
 const {createRoot} = require('react-dom/client');
 
+let charSheetMax = 3;
+let charSheetAmt = 0;
+
 const handleSheet = (e, onSheetAdded) =>{
     e.preventDefault();
+    helper.hideError();
+
+    if(charSheetAmt+1>charSheetMax){
+        helper.handleError('You have maxed out on characters. please purchase more to create new characters!');
+        return false;
+    }
     helper.hideError();
 
     const name = e.target.querySelector('#CharName').value;
@@ -31,18 +40,22 @@ const handleSheet = (e, onSheetAdded) =>{
 
 const handleChar = (e, char) =>{
     e.preventDefault();
-    helper.hideError();
+
+    
 
     console.log(char);
     const name = e.target.querySelector('#charName').innerHTML;
     const playbook = e.target.querySelector('#charPlaybook').innerHTML;
     const description = e.target.querySelector("#charDescription").innerHTML;
+    const id = e.target.querySelector('#charID').innerHTML;
+    const ratings = e.target.querySelector('#charRatings').innerHTML;
 
     console.log('name: ' + name);
     console.log('playbook: ' + playbook);
     console.log('desc.: ' + description);
+    console.log(e.target.action + `/${id}`);
 
-    helper.sendPost(e.target.action, {name, playbook, description});
+    helper.sendPost(e.target.action, {name, playbook, description, ratings, id});
     return false;
     
 }
@@ -110,7 +123,10 @@ const CharList = (props) =>{
         );
     }
 
+    charSheetAmt = chars.length;
+
     const characterNodes = chars.map(char =>{
+
         return(
             <form id='charForm'
                 onSubmit= {(e, char)=>handleChar(e, char)}
@@ -123,6 +139,8 @@ const CharList = (props) =>{
                     <h3 id='charName' className='charName'>Name: {char.name}</h3>
                     <h3 id='charPlaybook' className='charPlaybook'>Playbook: {char.playbook}</h3>
                     <h3 id='charDescription' className='charDescription'>Description: {char.description}</h3>
+                    <h3 id='charRatings' className='charRatings' style={{display:'none'}}>{char.ratings}</h3>
+                    <h3 id='charID' className='charID' style={{display:'none'}}>{char._id}</h3>
                     <input id='charFull' type='submit' value='Show Full Character Sheet'/>
                 </div>
             </form>
@@ -132,6 +150,17 @@ const CharList = (props) =>{
     return (
         <div className='charList'>
             {characterNodes}
+            <form id='subForm'
+                onSubmit= {(e)=>{
+                    charSheetMax++;
+                }}
+                name='subForm'
+                className='subForm'
+            >
+                <h3>Need more character sheets? click here to purchase.</h3>
+                <input id='purchaseSubmit' type='submit' value='+1 character sheet'/>
+
+            </form>
         </div>
     );
 };

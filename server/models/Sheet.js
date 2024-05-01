@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const File = require('./Filestore.js');
-const {FileSchema} = File;
 const _ = require('underscore');
+const File = require('./filestore.js');
+
+const { FileSchema } = File;
 
 const setName = (name) => _.escape(name).trim();
 const setPlaybook = (playbook) => _.escape(playbook).trim();
@@ -19,6 +20,10 @@ const SheetSchema = new mongoose.Schema({
     required: true,
     trim: true,
     set: setPlaybook,
+  },
+  ratings:{
+    type: [String],
+    required:true
   },
   level: {
     type: Number,
@@ -58,19 +63,23 @@ const SheetSchema = new mongoose.Schema({
     trim: true,
     set: setDescription,
   },
-  image:{
-    type:FileSchema,
-    required:false,
+  image: {
+    type: FileSchema,
+    required: false,
   },
   owner: {
     type: mongoose.Schema.ObjectId,
-    required:true,
+    required: true,
     ref: 'Account',
   },
+  _id: {
+    type: mongoose.Schema.Types.UUID,
+    required: true,
+  },
   createdDate: {
-    type:Date,
-    default:Date.now
-  }
+    type: Date,
+    default: Date.now,
+  },
 });
 
 SheetSchema.statics.toAPI = (doc) => ({

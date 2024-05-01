@@ -47,12 +47,16 @@ const LoginWindow = (props) =>{
             onSubmit={handleLogin}
             action= '/login'
             method='POST'
-            className='mainForm'
-        >
+            className='accountForm'
+        >   
+        <div>
             <label htmlFor='username'>Username: </label>
             <input id='user' type='text' name='username' placeholder='username' />
+        </div>
+        <div>
             <label htmlFor='pass'>Password: </label>
             <input id='pass' type='password' name='pass' placeholder='password'/>
+        </div>
             <input className='formSubmit' type='submit' value='Sign in' />
         </form>
     );
@@ -61,18 +65,25 @@ const LoginWindow = (props) =>{
 const SignupWindow = (props) =>{
     return(
         <form id='signupForm'
+        class='accountWindow'
         name='signupForm'
         onSubmit={handleSignup}
         action='/signup'
         method='POST'
-        className='mainForm'
+        className='accountForm'
     >
+        <div>
         <label htmlFor='username'>Username: </label>
         <input id='user' type='text' name='username' placeholder='username'/>
+        </div>
+        <div>
         <label htmlFor='pass'>Password: </label>
-        <input id='pass' type='password' name='pass' placeholder='password' />
-        <label htmlFor='pass'>Password: </label>
+        <input id='pass' type='password' name='pass' placeholder='password' />        
+        </div>
+        <div>
+        <label htmlFor='pass'>Retype Password: </label>
         <input id='pass2' type='password' name='pass2' placeholder='retype password'/>
+        </div>
         <input className='formSubmit' type='submit' value='Sign up'/>
     </form>
     );

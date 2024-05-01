@@ -34,7 +34,7 @@ const retrieveFile = async (req, res) => {
   let doc;
   try {
     doc = await File.findOne({ _id: req.query.id }).exec();
-    return res.status(200);
+    return res.status(200).json({found: doc});
   } catch (err) {
     console.log(err);
     return res.status(400).json({ error: 'Something went wrong retrieving file!' });

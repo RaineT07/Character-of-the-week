@@ -19,8 +19,8 @@ const router = (app) => {
   app.post('/getSingleSheet', mid.requiresLogin, controllers.Sheet.getSingleSheet);
   app.get('/singleSheet/:id', mid.requiresLogin, controllers.Sheet.sheetPage);
   app.post('/getCharacter', mid.requiresLogin, controllers.Sheet.getCharacter);
-  app.post('/updateChar',mid.requiresLogin,controllers.Sheet.updateChar);
-  
+  app.post('/updateChar', mid.requiresLogin, controllers.Sheet.updateChar);
+
   app.get('/sheet', mid.requiresLogin, controllers.Sheet.sheetPage);
   app.post('/makeSheet', mid.requiresLogin, controllers.Sheet.makeCharacter);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);

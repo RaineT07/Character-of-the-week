@@ -22,7 +22,7 @@ const makeCharacter = async (req, res) => {
   const sheetData = {
     name: req.body.name,
     playbook: req.body.playbook,
-    ratings: ["0", "0", "0", "0", "0"],
+    ratings: ['0', '0', '0', '0', '0'],
     level: 0,
     experience: 0,
     luck: 0,
@@ -95,34 +95,34 @@ const getSingleSheet = async (req, res) => {
   }
 };
 
-const getCharacter = async (req, res) =>{
+const getCharacter = async (req, res) => {
   console.log('oh help');
-  try{
-    const data= req.body;
-    const query={ _id: data.character_id};
+  try {
+    const data = req.body;
+    const query = { _id: data.character_id };
     const docs = await Sheet.find(query).select('name playbook ratings level experience luck harm unstable description').lean().exec();
     console.log(docs);
     // console.log(data);
-    return res.json({char: docs});
-  }catch(err){
+    return res.json({ char: docs });
+  } catch (err) {
     console.log(err);
-    return res.status(500).json({error:'Error retrieving character'});
+    return res.status(500).json({ error: 'Error retrieving character' });
   }
-}
+};
 
-const updateChar = async (req, res) =>{
+const updateChar = async (req, res) => {
   console.log('updating char');
   console.log(req.body);
-  try{
+  try {
     const data = req.body;
-    const query = {_id:data.character_id};
-    const docs = await Sheet.updateOne(query,{ratings:data.ratingValues}).lean().exec();
-    return res.status(201);
-  }catch(err){
+    const query = { _id: data.character_id };
+    const docs = await Sheet.updateOne(query, { ratings: data.ratingValues }).lean().exec();
+    return res.status(201).json({update: docs});
+  } catch (err) {
     console.log(err);
-    return res.status(500).json({error:'Error updating character'});
+    return res.status(500).json({ error: 'Error updating character' });
   }
-}
+};
 
 module.exports = {
   listPage,

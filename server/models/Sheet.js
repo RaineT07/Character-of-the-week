@@ -21,9 +21,9 @@ const SheetSchema = new mongoose.Schema({
     trim: true,
     set: setPlaybook,
   },
-  ratings:{
+  ratings: {
     type: [String],
-    required:true
+    required: true,
   },
   level: {
     type: Number,
